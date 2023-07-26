@@ -1,27 +1,34 @@
-# React + TypeScript + Vite
+# Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a demonstration to publish npm package publicly and use it.
 
-Currently, two official plugins are available:
+1. [https://github.com/DonzTea/react-widget](react-widget) repo demonstrating how to publish a react component as public npm package.
+2. [https://github.com/DonzTea/react-use-widget](react-use-widget) (this repo) demonstrating how to use published npm package.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+1. `git clone git@github.com:DonzTea/react-widget.git`
+2. `git clone git@github.com:DonzTea/react-use-widget.git`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Test NPM Package Locally
 
-- Configure the top-level `parserOptions` property like this:
+1. on react-widget, set `"name": "project-name"` in `package.json`
+2. on react-widget, set `"main": "./src/index.tsx"` in `package.json`
+3. on react-widget, run `npm link`
+4. on react-use-widget, run `npm link <project-name>`
+5. on react-use-widget, import the package then use it
+6. on react-use-widget, run `npm unlink --no-save <project-name>`
+7. on react-widget, run `npm unlink --no-save <project-name>`
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Publish NPM Package
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. on react-widget, run `npm login`
+2. on react-widget, remove `"private": true` from `package.json`
+3. on react-widget, run `npm publish`
+
+## Publish Scoped NPM Package
+
+1. on react-widget, run `npm login`
+2. on react-widget, remove `"private": true` from `package.json`
+3. on react-widget, change `"name": "project-name"` in `package.json` to `"name": “@username/project-name"`
+4. on react-widget, run `npm publish --access=public`
